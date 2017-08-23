@@ -34,8 +34,15 @@ public class User implements Serializable{
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "created_on")
-	private Date createdOn;
+	public User(){}
+	
+	public User(String username, String email, String password, String firstName, String lastName){
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 
 	public Long getUserId() {
 		return userId;
@@ -83,13 +90,5 @@ public class User implements Serializable{
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public Date getCreatedOn() {
-		return createdOn;
-	}
-
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
 	}
 }
