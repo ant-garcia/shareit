@@ -30,9 +30,9 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.postgresql.Driver" />
-		<property name="url" value="jdbc:postgresql://localhost:5432/shareit" />
+		<property name="url" value="jdbc:mysql://localhost:3306/shareit" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="spyhunter1" />
 	</bean>
 	
 	<bean id="sessionFactory"
@@ -41,7 +41,7 @@
 		<property name="packagesToScan" value="com.shareit.model" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL94Dialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
@@ -55,5 +55,21 @@
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="5000000" />
+	</bean>
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="xxx@gmail.com" />
+		<property name="password" value="" />
+				<!-- The name of the property, following JavaBean naming conventions -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
 	</bean>
 </beans>
